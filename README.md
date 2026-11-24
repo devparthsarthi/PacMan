@@ -1,4 +1,8 @@
 
+
+https://github.com/user-attachments/assets/9414643f-4ea2-41c6-95bf-d54b3a74d8b3
+
+
 # Pac-Man – Java Edition
 
 A classic Pac-Man arcade game recreated using **Core Java, Java Swing, and Data Structures & Algorithms**. The project features an interactive maze, intelligent ghosts with different personalities, power-ups, collision detection, and pathfinding algorithms.
