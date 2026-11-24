@@ -1,107 +1,192 @@
-# PAC-MAN — Java Edition
 
-A complete desktop Pac-Man-style maze game built with **Core Java, Swing and AWT**. It uses the original supplied pixel-art assets and a refactored object-oriented architecture.
+# Pac-Man – Java Edition
+
+A classic Pac-Man arcade game recreated using **Core Java, Java Swing, and Data Structures & Algorithms**. The project features an interactive maze, intelligent ghosts with different personalities, power-ups, collision detection, and pathfinding algorithms.
+
+## Description
+
+Pac-Man is a 2D maze-based arcade game in which the player controls Pac-Man, collects dots, navigates through a maze, and avoids enemy ghosts.
+
+The game uses Object-Oriented Programming to organize its components and game logic. Each ghost has a unique AI personality, creating different movement strategies and making gameplay more challenging.
+
+This project demonstrates the practical implementation of Java programming, OOP principles, game development, and Data Structures & Algorithms.
+
+## Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| Java | Core programming language |
+| Java Swing | Game window and graphical interface |
+| Java AWT | Graphics rendering and keyboard input |
+| Data Structures & Algorithms | Maze navigation and pathfinding |
+| Git & GitHub | Version control and project hosting |
 
 ## Features
-- Four distinct ghost personalities: direct chaser, ambusher, vector-based trickster, and close-range patroller
-- Slower ghost movement that gradually speeds up across levels
-- Start menu, pause/resume, game-over and victory states
-- Keyboard controls: arrows or WASD
-- Four ghosts with BFS-based shortest-path pursuit
-- Frightened mode after collecting power pellets
-- Pellet and power-pellet scoring
-- Lives, five levels, and persistent high score
-- Tunnel wraparound
-- Original image assets with Java-drawn fallbacks
-- No third-party runtime dependencies
 
-## Requirements
-- JDK 17 or newer (JDK 21 recommended)
-- VS Code with Extension Pack for Java (optional)
+### Gameplay
+- Interactive Pac-Man gameplay.
+- Maze-based movement and navigation.
+- Dot collection and scoring system.
+- Ghost collision detection.
+- Power mode to temporarily change ghost behavior.
+- Start, pause, resume, game-over, and victory states.
+- Restart functionality.
 
-## Run on Windows
-Double-click `run.bat`, or run:
+### Ghost AI and Personalities
+
+Each ghost follows a different movement strategy:
+
+| Ghost | Personality | Behavior |
+|---|---|---|
+| Red | Chaser | Directly pursues Pac-Man. |
+| Pink | Ambusher | Targets a position ahead of Pac-Man. |
+| Blue | Trickster | Uses projected targeting based on Pac-Man and the Red ghost. |
+| Orange | Patroller | Chases when distant and retreats when close. |
+
+Ghost movement speed is balanced to make gameplay more manageable.
+
+### Technical Features
+- Object-oriented project architecture.
+- BFS-based pathfinding.
+- Grid-based maze navigation.
+- Keyboard-controlled movement.
+- Asset management.
+- High-score storage.
+- Modular package organization.
+
+## Data Structures & Algorithms Used
+
+| Concept | Application |
+|---|---|
+| 2D Arrays / Grid | Representing the maze |
+| Breadth-First Search (BFS) | Finding paths through the maze |
+| Queue | Managing BFS traversal |
+| Graph Traversal | Navigating connected maze positions |
+| Manhattan Distance | Calculating distances between entities |
+| Object-Oriented Programming | Organizing game components |
+
+## Project Structure
+
+```text
+PacMan/
+├── src/
+│   ├── main/
+│   │   └── java/
+│   │       └── com/pacman/
+│   │           ├── algorithms/
+│   │           ├── config/
+│   │           ├── entities/
+│   │           ├── game/
+│   │           ├── storage/
+│   │           ├── ui/
+│   │           └── world/
+│   └── test/
+├── assets/
+├── run.bat
+├── test.bat
+├── test.sh
+└── README.md
+```
+
+## How the Game Works
+
+1. The application initializes the game window and loads the maze and game assets.
+2. The player starts the game and controls Pac-Man using the keyboard.
+3. Pac-Man navigates through the maze and collects dots.
+4. The game engine updates player and ghost positions.
+5. Ghost AI calculates movement targets based on individual personalities.
+6. Pathfinding helps ghosts navigate around maze obstacles.
+7. Collision detection checks interactions between Pac-Man and ghosts.
+8. Power-ups temporarily change ghost behavior.
+9. The game updates the score and checks victory or game-over conditions.
+
+## How to Run
+
+### Prerequisites
+
+- Java Development Kit (JDK 17 or later recommended).
+- Windows, macOS, or Linux.
+- Visual Studio Code or another Java-compatible IDE (optional).
+
+### Method 1: Clone and Run on Windows
+
+**1. Clone the repository**
+
+```bash
+git clone https://github.com/devparthsarthi/PacMan.git
+```
+
+**2. Open the project directory**
+
+```bash
+cd PacMan
+```
+
+**3. Run the game**
+
 ```powershell
 .\run.bat
 ```
 
-## Run on macOS / Linux
+### Method 2: Run Using JAR
+
+If a compiled JAR file is available:
+
 ```bash
-chmod +x run.sh
-./run.sh
+java -jar PacMan-10-10.jar
 ```
 
-## Compile and run manually
+### Verify Java Installation
+
 ```bash
-mkdir -p out
-javac -encoding UTF-8 -d out -sourcepath src/main/java src/main/java/com/pacman/App.java
-# Copy resources to output classpath
-# Windows PowerShell:
-Copy-Item -Recurse -Force src/main/resources/* out/
-java -cp out com.pacman.App
+java -version
+javac -version
 ```
+
+Make sure the JDK is installed and configured correctly.
 
 ## Controls
+
 | Key | Action |
 |---|---|
-| Enter | Start / continue after level |
-| Arrow keys or WASD | Move |
-| P or Esc | Pause |
-| R | Restart after game over / victory |
+| Arrow Keys | Move Pac-Man |
+| W / A / S / D | Alternative movement controls |
+| P | Pause / Resume |
+| Enter | Start / Continue |
+| R | Restart |
+| Esc | Pause |
 
-## Architecture
-```text
-src/
-├── main/
-│   ├── java/com/pacman/
-│   │   ├── App.java
-│   │   ├── algorithms/PathFinder.java
-│   │   ├── config/GameConfig.java
-│   │   ├── entities/{Entity,PacMan,Ghost}.java
-│   │   ├── game/{Direction,GameState,GameEngine}.java
-│   │   ├── storage/HighScoreStore.java
-│   │   ├── ui/{AssetManager,GamePanel}.java
-│   │   └── world/Maze.java
-│   └── resources/assets/  # supplied PNG sprites
-└── test/java/com/pacman/algorithms/PathFinderTest.java
-```
+## Future Scope
 
-## DSA used
-- **BFS (Breadth-First Search):** Finds shortest paths for ghost pursuit.
-- **Queue (`ArrayDeque`):** Implements BFS frontier.
-- **2D arrays:** Maze, visited, distance and first-step tracking.
-- **Hash-free graph traversal:** Each walkable maze tile is a graph vertex; valid adjacent tiles are edges.
-- **Complexity:** BFS is O(V + E) time and O(V) auxiliary space, where V is walkable tiles and E is at most 4V.
+The project can be extended with:
 
-## OOP used
-- Abstraction: `Entity` is an abstract base class.
-- Inheritance: `PacMan` and `Ghost` extend `Entity`.
-- Encapsulation: game state and entity state are managed through classes.
-- Enums: `Direction` and `GameState`.
-- Separation of concerns: game rules, rendering, assets, maze, pathfinding and persistence are separate.
+- Multiple maze layouts and difficulty levels.
+- More advanced ghost AI and pathfinding strategies.
+- Improved animations and sound effects.
+- Multiplayer mode.
+- Additional power-ups and special abilities.
+- Leaderboards and persistent player profiles.
+- Customizable game settings.
+- Performance optimization and expanded automated testing.
 
-## Tests
-Run the dependency-free pathfinding smoke test:
-```bash
-javac -encoding UTF-8 -d out -sourcepath src/main/java:src/test/java src/test/java/com/pacman/algorithms/PathFinderTest.java
-java -cp out com.pacman.algorithms.PathFinderTest
-```
-On Windows, replace `:` in the classpath with `;`.
+## Learning Outcomes
 
-## Notes
-This is an educational original implementation inspired by classic maze-chase mechanics. It is not affiliated with or endorsed by the owners of Pac-Man.
+Through this project, the following concepts were explored:
+
+- Java OOP principles and modular programming.
+- GUI development using Swing and AWT.
+- BFS and graph traversal.
+- Grid-based game design.
+- Collision detection and game-state management.
+- Basic AI behavior and decision-making.
+- Git and GitHub version control.
+
+## Author
+
+**Parthsarthi Sharma**
+
+GitHub: [@devparthsarthi](https://github.com/devparthsarthi)
 
 
-## Ghost behavior and speed
-| Level | Ghost movement interval |
-|---|---|
-| 1–2 | One move every 7 game ticks |
-| 3–4 | One move every 6 game ticks |
-| 5 | One move every 5 game ticks |
 
-Each ghost has a distinct strategy:
-- Red (Blinky): follows Pac-Man's current tile.
-- Pink (Pinky): aims up to four walkable tiles ahead of Pac-Man.
-- Blue (Inky): calculates a vector target using Pac-Man's position and Red's position.
-- Orange (Clyde): chases from a distance and retreats when close.
-- During power mode, all ghosts try to move away from Pac-Man.
+**Built with Java, Data Structures & Algorithms, and a little arcade nostalgia.**
